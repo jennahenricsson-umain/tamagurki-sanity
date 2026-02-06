@@ -15,5 +15,9 @@ export const stateType = defineType({
       name: 'frames',
       type: 'image',
     }),
+    defineField({
+        name: 'speechBubble',
+        type: 'string',
+    })
   ],
 })
