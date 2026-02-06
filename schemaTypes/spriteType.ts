@@ -1,7 +1,7 @@
 
 import {defineField, defineType} from 'sanity'
 
-export const postType = defineType({
+export const spriteType = defineType({
   name: 'sprite',
   title: 'Sprite',
   type: 'document',
@@ -18,23 +18,36 @@ export const postType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'speech',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'frames',
-      title: 'Frames (Animation)',
+      name: 'speech-bubble',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
+      of: [{ type: 'string', options: { hotspot: true } } ],
       options: {
         layout: 'grid', 
       },
     }),
     defineField({
-      name: 'speech',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    })
+      name: 'frames',
+      title: 'Frames (Animation)',
+      type: 'array',
+of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true // Tillåter dig att välja fokuspunkt i bilden
+          },
+          fields: [
+            {
+              name: 'frameName',
+              type: 'string',
+              title: 'Frame Namn',
+              description: 'Används för att identifiera framen i animationen',
+            }
+          ]
+        }
+      ],
+      options: {
+        layout: 'grid', 
+      },
+    }),
     ],
 })
